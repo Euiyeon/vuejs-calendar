@@ -32,7 +32,7 @@ var baseConfig = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]',
-          publicPath: process.env.CDN_URL && process.env.NODE_ENV === 'production' ? `${process.env.CDN_URL}/dist/` : false
+          publicPath: process.env.CDN_URL && process.env.NODE_ENV === 'production' ? `${process.env.CDN_URL}/dist/` : ''
         }
       },
       {

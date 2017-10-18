@@ -7,6 +7,10 @@ const fs = require('fs');
 const http = require('http');
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
+if (process.env.NODE_ENV === 'production') {
+  app.use('/dist', express.static(path.join(__dirname, 'dist')));
+}
+
 
 app.get('/', (req, res) => {
   let template = fs.readFileSync(path.resolve('./index.html'), 'utf-8');
@@ -24,7 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 
 server.listen(process.env.PORT, function () {
   console.log(`Example app listening on port ${process.env.PORT}!`);
-  if (process.env.NODE_ENV === 'development') {
-    require("open")(`http://localhost:${process.env.PORT}`);
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   require("open")(`http://localhost:${process.env.PORT}`);
+  // }
 });
